@@ -3,7 +3,7 @@ export const DISHES =
         {
         id: 0,
         name:'Uthappizza',
-        image: 'assets/images/uthappizza.png',
+        image: 'https://static.toiimg.com/thumb/53110049.cms?width=1200&height=900',
         category: 'mains',
         label:'Hot',
         price:'4.99',
@@ -48,7 +48,7 @@ export const DISHES =
         {
         id: 1,
         name:'Zucchipakoda',
-        image: 'assets/images/zucchipakoda.png',
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtPsgrpANG6he-5jT3pNpMSaJl5V1ShH2zMA&usqp=CAU',
         category: 'appetizer',
         label:'',
         price:'1.99',
@@ -94,7 +94,7 @@ export const DISHES =
         {
         id: 2,
         name:'Vadonut',
-        image: 'assets/images/vadonut.png',
+        image: 'https://www.cookomix.com/wp-content/uploads/2017/01/donuts-thermomix.jpg',
         category: 'appetizer',
         label:'New',
         price:'1.99',
@@ -140,7 +140,7 @@ export const DISHES =
         {
         id: 3,
         name:'ElaiCheese Cake',
-        image: 'assets/images/elaicheesecake.png',
+        image: 'https://food-images.files.bbci.co.uk/food/recipes/new_york_cheesecake_20451_16x9.jpg',
         category: 'dessert',
         label:'',
         price:'2.99',

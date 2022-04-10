@@ -2,7 +2,8 @@ import React from "react";
 import {Card , CardImg , CardImgOverlay , CardText , CardBody , CardTitle} from 'reactstrap';
 
 function DishDetail(props) {
-    const {selectedDish} = props;
+    const {dish} = props;
+    
     const renderDish = (dish) =>{
         if(dish != null){
             return (
@@ -29,7 +30,7 @@ function DishDetail(props) {
                             return (
                                 <>
                                     <CardText>{comment.comment}</CardText>
-                                    <CardText>--{comment.author}, {comment.date}</CardText>
+                                    <CardText>--{comment.author}, {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</CardText>
                                 </>
                             )
                         })}
@@ -45,10 +46,10 @@ function DishDetail(props) {
         <>
             <div className="row ">
             <div className="col-12 col-md-5 m-1">
-                {renderDish(selectedDish)}
+                {renderDish(dish)}
             </div>
             <div className="col-12 col-md-5 m-1">
-                {renderComment(selectedDish)}
+                {renderComment(dish)}
             </div>
             </div>
         </>)
