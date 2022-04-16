@@ -61,7 +61,6 @@ function RenderComments(props) {
 }
 
 function DishDetail(props) {
-  const { dish } = props;
   return (
     <div className="container">
       <div className="row">

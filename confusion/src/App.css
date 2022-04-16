@@ -40,3 +40,14 @@ address {
   width: 35%;
   height: 50%;
 }
+
+.MediaPhoto {
+  object-fit: contain;
+  width: 150px;
+  height: 150px;
+}
+
+.textJustify {
+  text-align: justify;
+  text-justify: inter-word;
+}
