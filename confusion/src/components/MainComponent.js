@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState,Component } from "react";
 import { Navbar, NavbarBrand } from "reactstrap";
 import Menu from "./MenuComponent";
 import DishDetail from "./DishdetailComponent";
@@ -21,6 +21,7 @@ class Main extends Component {
       comments: COMMENTS,
       promotions: PROMOTIONS,
       leaders: LEADERS,
+      selectedDishId: null,
     };
   }
 
@@ -32,6 +33,14 @@ class Main extends Component {
         leader={this.state.leaders.filter((leader) => leader.featured)[0]}
       />
     );
+  }
+
+  DishWithId = ({match}) => {
+    console.log("match match.params.dishId ",match.params.dishId);
+    return(
+        <DishDetail dish={this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]} 
+          comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))} />
+    );
   };
 
   render() {
@@ -39,12 +48,15 @@ class Main extends Component {
       <div>
         <Header></Header>
         <Switch>
-          <Route path="/home" component={this.HomePage} />
+          <Route exact path="/home" component={this.HomePage} />
           <Route
             exact
             path="/menu"
-            component={() => <Menu dishes={this.state.dishes} />}
+            component={() => <>
+            <Menu dishes={this.state.dishes}  onClick={(dishId) => this.setselectedDish(dishId)}/>
+            </>}
           />
+          <Route path='/menu/:dishId' component={this.DishWithId} />
           <Route exact path="/contactus" component={Contact} />
           <Redirect to="/home" />
         </Switch>
