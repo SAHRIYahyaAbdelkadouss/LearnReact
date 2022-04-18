@@ -16,12 +16,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(addComment(dishId, rating, author, comment)),
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (store) => {
   return {
-    dishes: state.dishes,
-    comments: state.comments,
-    promotions: state.promotions,
-    leaders: state.leaders,
+    dishes: store.dishes,
+    comments: store.comments,
+    promotions: store.promotions,
+    leaders: store.leaders,
   };
 };
 
@@ -41,7 +41,21 @@ class Main extends Component {
   };
 
   DishWithId = ({ match }) => {
-    console.log("match match.params.dishId ", match.params.dishId);
+    console.log("dishwithId ", match.params.dishId, this.props.dishes);
+    console.log(
+      "dish passed",
+      this.props.dishes.filter(
+        (dish) => dish.id === parseInt(match.params.dishId, 10)
+      )[0]
+    );
+    const dish = this.props.dishes.filter(
+      (dish) => dish.id === parseInt(match.params.dishId, 10)
+    )[0];
+    // return (
+    //   <p>
+    //     No dish for id: {match.params.dishId} {JSON.stringify(dish)}
+    //   </p>
+    // );
     return (
       <DishDetail
         dish={
@@ -62,6 +76,7 @@ class Main extends Component {
   };
 
   render() {
+    console.log("main dishes", this.props.dishes);
     return (
       <div>
         <Header></Header>
@@ -82,12 +97,12 @@ class Main extends Component {
           <Route path="/aboutus" component={this.Aboutus} />
           <Redirect to="/home" />
         </Switch>
-        {/* <Menu dishes={dishes} onClick={(dishId) => setselectedDish(dishId)} />
-      <DishDetail dish={dishes.filter((dish) => dish.id === selectedDish)[0]} /> */}
         <Footer></Footer>
       </div>
     );
   }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+const _main = connect(mapStateToProps, mapDispatchToProps)(Main);
+
+export default withRouter(_main);
